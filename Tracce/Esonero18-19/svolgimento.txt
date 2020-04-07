@@ -1,0 +1,70 @@
+Traccia A
+
+1)
+
+			creaInsieme()			aggiungi(I,S)
+
+cancella(I',S')		creaInsieme()			if S=S' then 
+								I
+							else
+								aggiungi(cancella(I,S'),S)
+
+
+cardinalità(I')		0				1 + cardinalità(I)
+
+
+filtra(I',S')		error				if isPrefix(S',S)==true then
+								filtra(I,S')
+							else aggiungi(filtra(I,S'),S)
+
+
+appartiene(I',S')	false				if S=S' then 
+								true
+							else
+								appartiene(I,S')
+
+
+
+
+
+
+uguale(I',I'')		creaInsieme()			aggiungi(I1,S1)
+
+
+creaInsieme()		true				false		
+
+
+
+aggiungi(I2,S2)		false				if cardinalità(I')=cardinalità(I") then 
+								if appartiene(aggiungi(I1,S1),S2) and appartiene(aggiungi(I2,S2),S1) then
+									uguale(cancella(I1,S2),cancella(I2,S1))
+							else false
+						
+
+unione(I',I")		creaInsieme()			aggiungi(I1,S1)
+
+
+creaInsieme()		creaInsieme()			aggiungi(I1,S1)
+
+
+aggiungi(I2,S2)		aggiungi(I2,S2)			if appartiene(aggiungi(I1,S1),S2) then
+								unione(aggiungi(I1,S1),I2)
+							else
+								unione(aggiungi(aggiungi(I1,S1),S2),I2)
+
+
+declare:
+	I,I1,I2: insieme
+	S,S',S1,S2: stringa
+	+ (intero,intero) -> intero
+	isPrefix(stringa,stringa) -> boolean    //restituisce true se S1 è prefisso di S2
+
+
+
+2)	L'astrazione funzionale è una tecninca di astrazione nella progettazione che permette di creare un modulo software che effettua una trasformazione sui dati di input.
+  	L'utente che userà il modulo conosce la segnatura, la specifica sintattica del modulo (cioè, nome del modulo, tipo degli input e tipo dell'output) ed inoltre conosce la specifica
+   	semantica, cioè qual'è l'operazione effettuata. Ciò che non sa è l'implementazione, il come questa operazione viene implementata.
+	Nell'astrazione funzionale i però i dettagli relativi alla rappresentazione dei tipi di dati deve essere conosciuta dall'utente, inoltre se l'astrazione è condivisa tra diversi moduli
+	ogni modifica sulla rappresentazione del dato si ripercuoterà su di essi.
+	L'astrazione di funzione invece è una tecnica di astrazione nella programmazione, è specifica mediante una definizione di funzione; function I(FP1; Fp2; ... ; FPn) is E dove I è l'identificatore di 		funzione FP sono parametri formali e E è l'espressione da valutare. L'espressione E è ciò che interessa all'implementatore. Quest'ultima non dovrebbe contenere computazioni che modificano lo stato del 	 sistema ( non deve essere side effecting ), come assegnazioni, iterazioni ecc... ma solo operazioni che producono dei valori. Per esempio un'astrazione di funzione per calcolare il fattoriale di un 		numero potrebbe usare la ricorsione per evitare di usare iterazioni, però anche questa soluzione non è perfetta dato che la ricorsione deficita l'efficienza della funzione. Per finire è opportuno 		chiarire la differenza tra cittadini di prima, seconda e terza classe. Una funzione di terza classe può essere solo chiamata, se è di seconda può anche essere passata come argomento ad altre funzioni 	mentre se è di prima può essere restituito come risultato di altre chiamate di funzioni o assegnata come valore di una variabile.
+	Ugualmente i valori possono essere denotabili,esprimibili e memorizzabili.   
