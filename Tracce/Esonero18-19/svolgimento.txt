@@ -67,4 +67,61 @@ declare:
 	Nell'astrazione funzionale i però i dettagli relativi alla rappresentazione dei tipi di dati deve essere conosciuta dall'utente, inoltre se l'astrazione è condivisa tra diversi moduli
 	ogni modifica sulla rappresentazione del dato si ripercuoterà su di essi.
 	L'astrazione di funzione invece è una tecnica di astrazione nella programmazione, è specifica mediante una definizione di funzione; function I(FP1; Fp2; ... ; FPn) is E dove I è l'identificatore di 		funzione FP sono parametri formali e E è l'espressione da valutare. L'espressione E è ciò che interessa all'implementatore. Quest'ultima non dovrebbe contenere computazioni che modificano lo stato del 	 sistema ( non deve essere side effecting ), come assegnazioni, iterazioni ecc... ma solo operazioni che producono dei valori. Per esempio un'astrazione di funzione per calcolare il fattoriale di un 		numero potrebbe usare la ricorsione per evitare di usare iterazioni, però anche questa soluzione non è perfetta dato che la ricorsione deficita l'efficienza della funzione. Per finire è opportuno 		chiarire la differenza tra cittadini di prima, seconda e terza classe. Una funzione di terza classe può essere solo chiamata, se è di seconda può anche essere passata come argomento ad altre funzioni 	mentre se è di prima può essere restituito come risultato di altre chiamate di funzioni o assegnata come valore di una variabile.
-	Ugualmente i valori possono essere denotabili,esprimibili e memorizzabili.   
+	Ugualmente i valori possono essere denotabili,esprimibili e memorizzabili. 
+
+
+3)	La relazione is_a nel paradigma OO è sinonimo di generalizzazione, ereditarietà. Una sottoclasse eredita attributi e metodi ( o parte di essi ) da una superclasse, ma può anche aggiungerne di propri, 	specializzandosi. Esistono diversi tipi di ereditarità, alcuni di essi sono per estensione, di implementazione, di restrizione e variazione funzionale. Nella prima si eredità tutto ciò che è presente	 	 nella superclasse senza modificare la visibilità e aggiungengo i propri attributi e metodi. Nella seconda si modifica l'implementazione di uno o più metodi della superclasse (senza modificarne la	 	 segnatura, overriding non overloading). purtroppo può essere causa di errore dato che le modifiche ai metodi della superclasse non si ripercuotono automaticamente sulla sottoclasse, quindi se ci sono dei 		problemi comuni di implementazione bisognerebbe correggerli su entrambi i metodi, non rispettando il principio DRY. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+TRACCIA B
+
+1)	intersezione(I',I'')		creaInsime()			aggiungi(I1,s1)
+
+
+		creaInsieme()		creaInsieme()			creaInsieme()			
+
+
+
+
+		aggiungi(I2,s2)		creaInsieme()			if uguali(aggiungi(I1,s1),aggiungi(I2,s2)) then 
+										aggiungi(I1,s1)
+									else if not appartiene(aggiungi(I1,s1),s2) and not appartiene(aggiungi(I2,s2),s1) then
+										intersezione(cancella(aggiungi(I1,s1),s2),cancella(aggiungi(I2,s2),s1))
+									else if appartiene(aggiungi(I1,s1),s2) and not appartiene(aggiungi(I2,s2),s1) then
+										intersezione(I1,aggiungi(I2,s2)))
+									else if not appartiene(aggiungi(I1,s1),s2) and appartiene(aggiungi(I2,s2),s1) then
+										intersezione(aggiungi(I1,s1),I2)   		
+									else if appartiene(aggiungi(I1,s1),s2) and appartiene(aggiungi(I2,s2),s1) then	
+										aggiungi(aggiungi(intersezione(I1,I2),s1),s2)
+
+
+
+									if not appartiene(aggiungi(I1,s1),s2) and not appartiene(aggiungi(I2,s2),s1) then
+										intersezione(I1,I2)
+									else if appartiene(aggiungi(I1,s1),s2) and not appartiene(aggiungi(I2,s2),s1) then
+										aggiungi(intersezione(I1,I2),s2)
+									else if not appartiene(aggiungi(I1,s1),s2) and appartiene(aggiungi(I2,s2),s1) then
+										aggiungi(intersezione(I1,I2),s1)
+									else if appartiene(aggiungi(I1,s1),s2) and appartiene(aggiungi(I2,s2),s1) then	
+										aggiungi(aggiungi(intersezione(I1,I2),s1),s2)
+
+
+
+
+
+
+
