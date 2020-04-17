@@ -1,0 +1,113 @@
+TRACCIA A
+
+1)	
+				creaCatalogo()				aggiungi(C,c,l)
+
+	cancella(C',l')		creaCatalogo()				if l=l' then	
+										cancella(C,l')
+									else aggiungi(cancella(C,l'),c,l)			
+
+	
+	codici(C',l')		creaListaCodici()			if l=l' then
+										aggiungiCodice(codici(C,l'),c)
+									else 	codici(C,l')
+
+	
+	filtra(C',n)		creaListaCodici()			if contaPagine(l)>=n then
+										aggiungiCodice(filtra(C,n),c)
+									else filtra(C,n)
+
+
+	libroVoluminoso(C')	error					if contaPagine(l)>contaPagine(libroVoluminoso(C)) then
+										l	
+									else if contaPagine(l)=contaPagine(libroVoluminoso(C)) then
+										error
+									else libroVoluminoso(C)
+						
+
+	libri(C',c')		creaListaLibri				if c=c' then
+										aggiungiLibro(libri(C,c'),l)
+									else 	libri(C,c')
+
+
+	appartiene(C',c',l')	false					if c'=c and l'=l then
+										true
+									else appartiene(C,c',l')
+
+	cancella(C',c')         creaCatologo()				if c=c' then	
+										cancella(C,c')
+									else aggiungi(cancella(C,c'),c,l)	
+	
+	codici(C',c')		creaInsiemeLibri()			if c>c' then
+										aggiungi(codici(C,c'),l)
+									else codici(C,c')
+
+
+										
+			
+
+
+
+
+
+
+
+
+
+	uguale(C',C",c)		creaCatalogo()			aggiungi(C1,c1,l1)
+					
+	creaCatalogo()		falso				falso
+	
+	
+	aggiungi(C2,c2,l2)	faso				if libri(aggiungi(C1,c1,l1),c)=libri(aggiungi(C2,c2,l2),c) then 
+									true
+								else false
+
+
+
+	intersezione(C',C")	creaCatalogo()			aggiungi(C1,c1,l1)
+
+
+
+	creaCatalogo()		creaCatalogo()			creaCatalogo()	
+
+	
+	aggiungi(C2,c2,l2)	creaCatalogo()			if appartiene(aggiungi(C1,c1,l1),c2,l2) and appartiene(aggiungi(C2,c2,l2),c1,l1) then
+									aggiungi(aggiungi(intersezione(C1,C2),c2,l2),c1,l1)
+								else if not appartiene(aggiungi(C1,c1,l1),c2,l2) and appartiene(aggiungi(C2,c2,l2),c1,l1) then
+									aggiungi(intersezione(C1,C2),c2,l2)
+								else if appartiene(aggiungi(C1,c1,l1),c2,l2) and not appartiene(aggiungi(C2,c2,l2),c1,l1) then
+									aggiungi(intersezione(C1,C2),c1,l1)
+								else if not appartiene(aggiungi(C1,c1,l1),c2,l2) and not appartiene(aggiungi(C2,c2,l2),c1,l1) then
+									intersezione(C1,C2)
+
+	
+
+
+
+
+
+
+
+
+
+
+declare:
+creaListaCodici()->ListaCodici
+creaListaLibri()->ListaLibri
+aggiungiCodice(ListaCodici,Codice)-> ListaCodici
+aggiungiLibro(ListaLibri,Libro)->ListaLibri
+=(ListaLibri,ListaLibri)->boolean
+
+ContaPagine(Libro)->intero
++(intero,intero)->intero 
+>=(intero,intero)->boolean
+>(codice,codice)->boolean
+
+C,C1,C2 : Catalogo
+c,c',c1,c2 : Codice
+l,l',l1,l2 : Libro
+n : intero
+
+creaInsiemeLibri()->insiemeLibri
+aggiungiLibro(insiemeLibro,Libro)->insiemeLibro
